@@ -2,7 +2,7 @@
 ## Summary
 The idea is to point this Docker at any git repo and have it run the project.
 
-In order for this to work, the project should have a run.sh to run the code. If installation or setup is required, an optional build.sh can be used.
+In order for this to work, the project should have a run.sh to run the code. If installation or setup for the code is required, an optional build.sh can be used which will be run straight after the project is checked out into the Container.
 
 It also assumes that the project uses *one* of:
 
@@ -12,7 +12,7 @@ It also assumes that the project uses *one* of:
 * Clojure (v 2.5.3)
 
 ## Deployment
-The git repo is *ALWAYS* checked out to the /home/project directory in the Container. It does **NOT** use the repo name as a directory. Restarting an existing container will re-start the project - it will NOT re-clone the git repo unless you delete the /home/project directory before the restart.
+The git repo is *ALWAYS* checked out to the /home/project directory in the Container. It does not use the repo name as a directory. Restarting an existing container will re-start the project - it will not re-clone or re-run the build.sh file from the git repo unless you delete the */home/project* directory before the restart.
 
 ## Build.sh
 
@@ -57,5 +57,6 @@ docker run -t -i --name ????? -e giturl=??? cistechfutures/uberany
 * You need to specify the *working name* of the container and the **SSH path** to the git repo you want to clone from. 
 * This process assumes that the correct ssh public/private keys are installed in all the right places for the repo you are accessing.
 * Only ports 3000, 8080 & 80 are exposed by Docker. If you want to open others, you will need to modify the Dockerfile prior to building the Container.
+* You still need to map the ports when you start the Container!
 * Remember 'localhost' won't work - you will need the Container IP!
 
