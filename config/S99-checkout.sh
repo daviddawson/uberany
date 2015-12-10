@@ -6,17 +6,21 @@ if [ ! -d "/home/project" ]; then
     mkdir /home/project
     git clone ${giturl} /home/project
 
-    if [ -e ~/home/project/build.sh ];then
+    if [ -e /home/project/build.sh ];then
         echo "Found build file"
-        /home/project/build.sh
+        cd /home/project
+        chmod +x build.sh
+        ./build.sh
     else
         echo "Did not find build file"
     fi
 fi
 
-if [ -e ~/home/project/run.sh ];then
+if [ -e /home/project/run.sh ];then
     echo "Found run file"
-    /home/project/run.sh
+    cd /home/project
+    chmod +x run.sh
+    ./run.sh
 else
     echo "Did not find run file"
 fi

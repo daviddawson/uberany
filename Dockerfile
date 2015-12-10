@@ -1,10 +1,15 @@
 FROM ubuntu:15.04
 
-#Update OS
-RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get autoremove -y
+#Update OS & Install Common Codebase
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    git-core \
+    curl \
+    nodejs \
+    npm
 
-#Install Common Codebase
-RUN apt-get install -y software-properties-common git-core curl
+#Add Symlink to node
+RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 #Install Java8
 RUN add-apt-repository ppa:webupd8team/java -y
@@ -19,14 +24,25 @@ ENV HTTP_CLIENT curl -k -s -f -L -o
 RUN curl --silent --location --retry 3 --insecure https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein --output /usr/bin/lein && chmod 0755 /usr/bin/lein
 RUN /usr/bin/lein upgrade
 
-#Remove old Node and replace with NodeJS
-RUN apt-get purge node -y
-RUN apt-get install nodejs npm -y
-RUN ln -s /usr/bin/nodejs /usr/bin/node
-
 #Clean up
 RUN apt-get clean
 
+#Open Ports
+EXPOSE 3000 80 8080
+
+#Copy ssh keys
+COPY config/config /root/.ssh/
+COPY config/id_rsa /root/.ssh/
+COPY config/id_rsa.pub /root/.ssh/
+
+RUN chmod 0644 /root/.ssh/id_rsa.pub
+RUN chmod 0600 /root/.ssh/id_rsa
+RUN chmod 0600 /root/.ssh/config
+RUN chown root:root /root/.ssh/config
+
 #Copy checkout script to endpoint
-COPY /config/S99-checkout.sh /etc/rc2.d/
-RUN chmod +x /etc/rc2.d/S99-checkout.sh
+COPY config/S99-checkout.sh /root/
+RUN ln -s /root/S99-checkout.sh /etc/rc2.d/S99-checkout.sh
+RUN chmod +x /root/S99-checkout.sh
+
+ENTRYPOINT ["/root/S99-checkout.sh"]
