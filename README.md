@@ -45,8 +45,14 @@ docker build -t cistechfutures/uberany .
 You can then run the Docker using the following command. 
 
 ```bash
-docker run -d -p 3000:3000 -p 8080:8080 -p 80:80 --name ????? -e giturl=???  cistechfutures/uberany
+docker run -d -p 3000:3000 -p 8080:8080 -p 80:80 --name ????? -e giturl=??? cistechfutures/uberany
 ```
 
-**Note** you need to specify the *working name* of the container and the **SSH path** to the git repo you want to clone from. This assumes that the correct ssh public/private keys are installed for the repo you are accessing.
+This will run a Container in detached mode - perfect for use with web based apps. For command line/bash based apps we could use
+
+```bash
+docker run -t -i --name ????? -e giturl=??? cistechfutures/uberany
+```
+
+**Note** you need to specify the *working name* of the container and the **SSH path** to the git repo you want to clone from. This process assumes that the correct ssh public/private keys are installed for the repo you are accessing.
 
