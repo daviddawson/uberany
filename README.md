@@ -53,7 +53,7 @@ This will run a Container in detached mode - perfect for use with web based apps
 docker run -t -i --name ????? -e giturl=??? cistechfutures/uberany
 ```
 
-In both cases the git hub repo will be access using the default cistechfutures userand password. If you want to use an alternative, specify them as part of the run command.
+In both cases the git hub repo will be access using the default cistechfutures user and password. If you want to use an alternative login, specify it as part of the run command.
 
 ```bash
 docker run -t -i --name ????? -e giturl=??? -e username=XXXX -e password=YYYY cistechfutures/uberany
