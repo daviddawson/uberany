@@ -30,17 +30,6 @@ RUN apt-get clean
 #Open Ports
 EXPOSE 3000 80 8080
 
-#Copy ssh keys
-COPY config/config /root/.ssh/
-COPY config/id_rsa /root/.ssh/
-COPY config/id_rsa.pub /root/.ssh/
-
-#Change permissions
-RUN chmod 0644 /root/.ssh/id_rsa.pub
-RUN chmod 0600 /root/.ssh/id_rsa
-RUN chmod 0600 /root/.ssh/config
-RUN chown root:root /root/.ssh/config
-
 #Copy checkout script to root directory
 COPY config/checkout.sh /root/
 RUN chmod +x /root/checkout.sh

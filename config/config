@@ -1,6 +1,0 @@
-#generic account
-Host github.com
-    HostName github.com
-    User tfadmin
-    IdentityFile /root/.ssh/id_rsa
-    StrictHostKeyChecking no

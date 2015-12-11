@@ -53,9 +53,14 @@ This will run a Container in detached mode - perfect for use with web based apps
 docker run -t -i --name ????? -e giturl=??? cistechfutures/uberany
 ```
 
+In both cases the git hub repo will be access using the default cistechfutures userand password. If you want to use an alternative, specify them as part of the run command.
+
+```bash
+docker run -t -i --name ????? -e giturl=??? -e username=XXXX -e password=YYYY cistechfutures/uberany
+```
+
 ### Notes
-* You need to specify the *working name* of the container and the **SSH path** to the git repo you want to clone from. 
-* This process assumes that the correct ssh public/private keys are installed in all the right places for the repo you are accessing.
+* You need to specify the *working name* of the container and the **HTTPS path** to the git repo you want to clone from. 
 * Only ports 3000, 8080 & 80 are exposed by Docker. If you want to open others, you will need to modify the Dockerfile prior to building the Container.
 * You still need to map the ports when you start the Container!
 * Remember 'localhost' won't work - you will need the Container IP!

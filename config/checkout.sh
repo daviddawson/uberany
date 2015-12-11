@@ -3,14 +3,33 @@
 #Exit immediately if any of this stuff returns a non-zero status.
 set -e
 
+#Check for username
+if [ -z "$username"]; then
+    USER="cistechfutures"
+else
+    USER=$username
+fi
+
+#Check for password
+if [ -z "$password"]; then
+    PASS="techfutu13"
+else
+    PASS=$password
+fi
+
 #Check if git url provided
 if [ ! -z "$giturl" ]; then
+
+    #Build git repo address
+    BODY=${giturl/'https://'/}
+    URL='https://'$USER':'$PASS'@'$BODY
 
     #Check if directory exists, if not create it and checkout git
     if [ ! -d "/home/project" ]; then
         echo "directory does not exist"
         mkdir /home/project
-        git clone ${giturl} /home/project
+
+        git clone $URL /home/project
 
         #Check for and execute build.sh if present
         if [ -e /home/project/build.sh ]; then
