@@ -35,6 +35,7 @@ COPY config/config /root/.ssh/
 COPY config/id_rsa /root/.ssh/
 COPY config/id_rsa.pub /root/.ssh/
 
+#Change permissions
 RUN chmod 0644 /root/.ssh/id_rsa.pub
 RUN chmod 0600 /root/.ssh/id_rsa
 RUN chmod 0600 /root/.ssh/config
