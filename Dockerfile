@@ -40,9 +40,8 @@ RUN chmod 0600 /root/.ssh/id_rsa
 RUN chmod 0600 /root/.ssh/config
 RUN chown root:root /root/.ssh/config
 
-#Copy checkout script to endpoint
-COPY config/S99-checkout.sh /root/
-RUN ln -s /root/S99-checkout.sh /etc/rc2.d/S99-checkout.sh
-RUN chmod +x /root/S99-checkout.sh
+#Copy checkout script to root directory
+COPY config/checkout.sh /root/
+RUN chmod +x /root/checkout.sh
 
-ENTRYPOINT ["/root/S99-checkout.sh"]
+ENTRYPOINT ["/root/checkout.sh"]
