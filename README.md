@@ -40,7 +40,7 @@ Checkout the uberany project into a folder and then build the Docker Container u
 docker build -t cistechfutures/uberany .
 ```
 
-# Useage
+# Usage
 You can then run the Docker using the following command. 
 
 ```bash
