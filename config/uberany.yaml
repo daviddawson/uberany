@@ -15,6 +15,6 @@ spec:
         - containerPort: 80
           name: web
         - containerPort: 8080
-          name: web_alt
+          name: webalt
         - containerPort: 3000
           name: photon
