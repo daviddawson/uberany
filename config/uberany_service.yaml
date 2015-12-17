@@ -11,9 +11,12 @@
       #Ports the service should serve on
       - port: 3000
         targetPort: 3000
+        name: "photon"
       - port: 80
         targetPort: 80
+        name: "web"
       - port: 8080
         targetPort: 8080
+        name: "webalt"
     selector:
       app: "uberany"
