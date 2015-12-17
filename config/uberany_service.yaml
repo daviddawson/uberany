@@ -1,0 +1,21 @@
+---
+  kind: "Service"
+  apiVersion: "v1"
+  metadata:
+    name: "uberany"
+    labels:
+      app: "uberany"
+  spec:
+    ports:
+      - port: 3000
+        targetPort: "photon"
+        nodePort: 3000
+      - port: 80
+        targetPort: "web"
+        nodePort: 80
+      - port: 8080
+        targetPort: "webalt"
+        nodePort: 8080
+    selector:
+      app: "uberany"
+    type: "NodePort"
