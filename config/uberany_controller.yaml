@@ -15,16 +15,19 @@
           app: "uberany"
       spec:
         containers:
-          -
-            name: "guesuberanytbook"
-            image: "cistechfutures/uberany:latest"
+          - image: cistechfutures/uberany
+            name: uberany
+            env:
+              - name: giturl
+                value: https://github.com/CIS-Tech-Futures/hello-world-node.git
+              - name: username
+                value: cistechfutures
+              - name: password
+                value: techfutu13
             ports:
-              -
-                name: "app"
-                containerPort: 3000
-              -
-                name: "web"
-                containerPort: 80
-              -
-                name: "webalt"
-                containerPort: 8080
+              - containerPort: 80
+                name: web
+              - containerPort: 8080
+                name: webalt
+              - containerPort: 3000
+                name: photon

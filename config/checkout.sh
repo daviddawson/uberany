@@ -5,14 +5,14 @@ set -e
 
 #Check for username
 if [ -z "$username"]; then
-    USER="cistechfutures"
+    echo "git username not provided"
 else
     USER=$username
 fi
 
 #Check for password
 if [ -z "$password"]; then
-    PASS="techfutu13"
+    echo "git password not provided"
 else
     PASS=$password
 fi
