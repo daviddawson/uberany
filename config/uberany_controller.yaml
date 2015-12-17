@@ -1,0 +1,30 @@
+---
+  kind: "ReplicationController"
+  apiVersion: "v1"
+  metadata:
+    name: "uberany"
+    labels:
+      app: "uberany"
+  spec:
+    replicas: 1
+    selector:
+      app: "uberany"
+    template:
+      metadata:
+        labels:
+          app: "uberany"
+      spec:
+        containers:
+          -
+            name: "guesuberanytbook"
+            image: "cistechfutures/uberany:latest"
+            ports:
+              -
+                name: "app"
+                containerPort: 3000
+              -
+                name: "web"
+                containerPort: 80
+              -
+                name: "webalt"
+                containerPort: 8080
