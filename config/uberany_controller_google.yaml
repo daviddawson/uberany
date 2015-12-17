@@ -1,0 +1,33 @@
+---
+  kind: "ReplicationController"
+  apiVersion: "v1"
+  metadata:
+    name: "uberany"
+    labels:
+      app: "uberany"
+  spec:
+    replicas: 1
+    selector:
+      app: "uberany"
+    template:
+      metadata:
+        labels:
+          app: "uberany"
+      spec:
+        containers:
+          - image: eu.gcr.io/oval-method-115410/uberany
+            name: uberany
+            env:
+              - name: giturl
+                value: https://github.com/CIS-Tech-Futures/hello-world-node.git
+              - name: username
+                value: cistechfutures
+              - name: password
+                value: techfutu13
+            ports:
+              - containerPort: 80
+                name: web
+              - containerPort: 8080
+                name: webalt
+              - containerPort: 3000
+                name: photon
