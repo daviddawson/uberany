@@ -1,5 +1,6 @@
 ---
   kind: "Service"
+  type: "LoadBalancer"
   apiVersion: "v1"
   metadata:
     name: "uberany"
@@ -7,15 +8,12 @@
       app: "uberany"
   spec:
     ports:
+      #Ports the service should serve on
       - port: 3000
-        targetPort: "photon"
-        nodePort: 3000
+        targetPort: 3000
       - port: 80
-        targetPort: "web"
-        nodePort: 80
+        targetPort: 80
       - port: 8080
-        targetPort: "webalt"
-        nodePort: 8080
+        targetPort: 8080
     selector:
       app: "uberany"
-    type: "NodePort"
