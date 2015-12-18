@@ -11,6 +11,10 @@ spec:
       env:
         - name: giturl
           value: https://github.com/CIS-Tech-Futures/hello-world-node.git
+        - name: username
+          value: cistechfutures
+        - name: password
+          value: techfutu13
       ports:
         - containerPort: 80
           name: web

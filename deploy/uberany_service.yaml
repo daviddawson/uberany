@@ -1,6 +1,5 @@
 ---
   kind: "Service"
-  type: "LoadBalancer"
   apiVersion: "v1"
   metadata:
     name: "uberany"
@@ -20,3 +19,4 @@
         name: "webalt"
     selector:
       app: "uberany"
+    type: "LoadBalancer"
