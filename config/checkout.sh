@@ -4,7 +4,7 @@
 set -e
 
 #Check for username
-if [ -z "$username"]; then
+if [ -z "$username" ]; then
     echo "git username not provided"
     exit 1
 else
@@ -12,7 +12,7 @@ else
 fi
 
 #Check for password
-if [ -z "$password"]; then
+if [ -z "$password" ]; then
     echo "git password not provided"
     exit 1
 else
