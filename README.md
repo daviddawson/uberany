@@ -10,6 +10,7 @@ It also assumes that the project uses *one* of:
 * Python (v 2.7.9)
 * Java (v 1.8.0-66-b17)
 * Clojure (v 2.5.3)
+* Ruby (v 2.?)
 
 ## Deployment
 The git repo is *ALWAYS* checked out to the /home/project directory in the Container. It does not use the repo name as a directory. Restarting an existing container will re-start the project - it will not re-clone or re-run the build.sh file from the git repo unless you delete the */home/project* directory before the restart.
@@ -53,7 +54,7 @@ This will run a Container in detached mode - perfect for use with web based apps
 docker run -t -i --name ????? -e giturl=??? cistechfutures/uberany
 ```
 
-In both cases the git hub repo will be access using the default cistechfutures user and password. If you want to use an alternative login, specify it as part of the run command.
+This assumes that the git hub repo will be accessible without a user and password being supplied. If you want to use a login & password, specify it as part of the run command.
 
 ```bash
 docker run -t -i --name ????? -e giturl=??? -e username=XXXX -e password=YYYY cistechfutures/uberany
