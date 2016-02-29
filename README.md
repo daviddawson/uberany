@@ -60,6 +60,17 @@ This assumes that the git hub repo will be accessible without a user and passwor
 docker run -t -i --name ????? -e giturl=??? -e username=XXXX -e password=YYYY cistechfutures/uberany
 ```
 
+By default UberAny will use the *master* branch of the specified repo. If you want to use another add 
+
+```bash
+-e branch=?????
+```
+so the command could be
+
+```bash
+docker run -t -i --name ????? -e giturl=??? -e username=XXXX -e password=YYYY -e branch=???? cistechfutures/uberany
+```
+
 ### Notes
 * You need to specify the *working name* of the container and the **HTTPS path** to the git repo you want to clone from. 
 * Only ports 3000, 8080 & 80 are exposed by Docker. If you want to open others, you will need to modify the Dockerfile prior to building the Container.
