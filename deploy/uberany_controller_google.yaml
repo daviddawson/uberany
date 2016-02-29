@@ -24,6 +24,8 @@
                 value: cistechfutures
               - name: password
                 value: techfutu13
+              - name: branch
+                value: master
             ports:
               - containerPort: 80
                 name: web

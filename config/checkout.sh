@@ -19,6 +19,14 @@ else
     PASS=$password
 fi
 
+#Check for branch
+if [ -z "$branch" ]; then
+    echo "defaulting to MASTER branch"
+    BRANCH="master"
+else
+    BRANCH=$branch
+fi
+
 #Check if git url provided
 if [ ! -z "$giturl" ]; then
 
@@ -31,7 +39,7 @@ if [ ! -z "$giturl" ]; then
         echo "directory does not exist"
         mkdir /home/project
 
-        git clone $URL /home/project
+        git clone --branch $BRANCH $URL /home/project
 
         #Check for and execute build.sh if present
         if [ -e /home/project/build.sh ]; then
