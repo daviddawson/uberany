@@ -24,6 +24,7 @@ if [ -z "$branch" ]; then
     echo "defaulting to MASTER branch"
     BRANCH="master"
 else
+    echo "Using requested branch"
     BRANCH=$branch
 fi
 
@@ -39,7 +40,7 @@ if [ ! -z "$giturl" ]; then
         echo "directory does not exist"
         mkdir /home/project
 
-        git clone --branch $BRANCH $URL /home/project
+        git clone --branch $BRANCH --depth 1 $URL /home/project
 
         #Check for and execute build.sh if present
         if [ -e /home/project/build.sh ]; then
