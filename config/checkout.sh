@@ -21,10 +21,10 @@ fi
 
 #Check for branch
 if [ -z "$branch" ]; then
-    echo "defaulting to MASTER branch"
+    echo "Defaulting to MASTER branch"
     BRANCH="master"
 else
-    echo "Using requested branch"
+    echo "Using requested branch - $branch"
     BRANCH=$branch
 fi
 
